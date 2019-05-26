@@ -1,5 +1,5 @@
 # mydockerpi
-Raspberry Pi homeserver running Nextcloud in a Docker environment
+Raspberry Pi homeserver running Nextcloud in a Docker environment. Nextcloud is available on the given domain name. Further services are using subdomains.
 
 ## Todo
 - Backup volumes
@@ -24,9 +24,13 @@ vim ~/mydockerpi/.env
 with this content and adjust the settings.
 ```
 DOMAINNAME=mycloud.example.com
-DOCKERDIR=/home/username/mydockerpi
 
 ACME_EMAIL=mail@mycloud.example.com
+
+NEXTCLOUD_ADMIN_USER=someadmin
+NEXTCLOUD_ADMIN_PASSWORD=MySuperSecretNextcloudPassword
+
+POSTGRES_PASSWORD=MySuperSecretDbPassword
 ```
 
 ### Create docker volumes
