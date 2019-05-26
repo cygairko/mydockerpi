@@ -31,8 +31,8 @@ services:
       - ${BASESVCDIR}/traefik/traefik.toml:/etc/traefik/traefik.toml
       - ${BASESVCDIR}/traefik/acme.json:/etc/traefik/acme/acme.json
     command: --acme.domains="${DOMAINNAME}" \
-             -- acme.email="${ACME_EMAIL}" \
-             -- docker.domain="${DOMAINNAME}" 
+             --acme.email="${ACME_EMAIL}" \
+             --docker.domain="${DOMAINNAME}" 
              
 
   portainer:
