@@ -28,11 +28,11 @@ services:
       traefik.docker.network: "traefik_proxy"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ${BASESVCDIR}/traefik/traefik.toml:/etc/traefik/traefik.toml
-      - ${BASESVCDIR}/traefik/acme.json:/etc/traefik/acme/acme.json
+      - ${DOCKERDIR}/traefik/traefik.toml:/etc/traefik/traefik.toml
+      - ${DOCKERDIR}/traefik/acme.json:/etc/traefik/acme/acme.json
     command: --acme.domains="${DOMAINNAME}" \
              --acme.email="${ACME_EMAIL}" \
-             --docker.domain="${DOMAINNAME}" 
+             --docker.domain="${DOMAINNAME}"
 
   portainer:
     image: portainer/portainer:linux-arm
