@@ -12,6 +12,7 @@ git clone git@github.com:cygairko/mydockerpi.git
 cd mydockerpi
 ```
 ```
+touch ~/mydockerpi/basesvc/traefik/acme.json
 chmod 600 ~/mydockerpi/basesvc/traefik/acme.json
 ```
 
@@ -40,12 +41,11 @@ docker volumes create v_redis
 ### Get the containers running
 First download the images. Currently I am testing on a Pi 2 Model B but should work on other models as well.
 ```
-cd basesvc
-docker-compose pull
+docker-compose -f docker-compose-basesvc.yml pull
 ```
 
 ```
-docker-compose up -d
+docker-compose -f docker-compose-basesvc.yml up -d
 ```
 It'll take a while until containers are completely up. Traefik will grab the certificates one after another. When you can access traefik.mycloud.example.com (and the other services) without a cert warning everything's up.
 
