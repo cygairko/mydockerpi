@@ -3,6 +3,7 @@ Raspberry Pi homeserver running Nextcloud in a Docker environment. Nextcloud is 
 
 ## Todo
 - Backup volumes
+- Migrate to docker stack instead docker-compose
 
 ## Step by step
 ### Preparation
