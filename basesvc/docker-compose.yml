@@ -33,7 +33,6 @@ services:
     command: --acme.domains="${DOMAINNAME}" \
              --acme.email="${ACME_EMAIL}" \
              --docker.domain="${DOMAINNAME}" 
-             
 
   portainer:
     image: portainer/portainer:linux-arm
