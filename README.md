@@ -17,22 +17,11 @@ touch ~/mydockerpi/basesvc/traefik/acme.json
 chmod 600 ~/mydockerpi/basesvc/traefik/acme.json
 ```
 
-Create ```.env``` file
+Create ```.env``` from sample file
 ```
-vim ~/mydockerpi/.env
+cp ~/mydockerpi/sample.env ~/mydockerpi/.env
 ```
-
-with this content and adjust the settings.
-```
-DOMAINNAME=mycloud.example.com
-
-ACME_EMAIL=mail@mycloud.example.com
-
-NEXTCLOUD_ADMIN_USER=someadmin
-NEXTCLOUD_ADMIN_PASSWORD=MySuperSecretNextcloudPassword
-
-POSTGRES_PASSWORD=MySuperSecretDbPassword
-```
+and update content with your domain and passwords.
 
 ### Create docker volumes
 They will be our storages and can be archived for backup reasons later on.
@@ -54,7 +43,7 @@ docker-compose -f docker-compose-nextcloud.yml pull
 docker-compose -f docker-compose-basesvc.yml up -d
 docker-compose -f docker-compose-nextcloud.yml up -d
 ```
-It'll take a while until containers are completely up. Traefik will grab the certificates one after another. When you can access traefik.mycloud.example.com (and the other services) without a cert warning everything's up.
+It'll take a while until containers are completely up. Traefik will grab the certificates one after another. When you can access traefik.mycloud.example.com (and the other services) without a cert warning everything's up. Also nextcloud (2nd compose file) setuptook almost 15min on my Pi2. Wait for it to complete.
 
 ## Benefits
 - Watchtower will keep the containers updated.
