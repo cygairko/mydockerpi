@@ -43,13 +43,15 @@ docker volumes create v_redis
 ```
 
 ### Get the containers running
-First download the images. Currently I am testing on a Pi 2 Model B but should work on other models as well.
+First download the images. Currently I am testing on a Pi 2 Model B but should work on other models as well. I have chosen to use two separate compose files. Some basic services won't be stopped when ```down```ing nextcloud parts. whoami container is more for debug reasons.
 ```
 docker-compose -f docker-compose-basesvc.yml pull
+docker-compose -f docker-compose-nextcloud.yml pull
 ```
 
 ```
 docker-compose -f docker-compose-basesvc.yml up -d
+docker-compose -f docker-compose-nextcloud.yml up -d
 ```
 It'll take a while until containers are completely up. Traefik will grab the certificates one after another. When you can access traefik.mycloud.example.com (and the other services) without a cert warning everything's up.
 

@@ -73,7 +73,7 @@ services:
       traefik.enable: "true"
       traefik.backend: "nextcloud"
       traefik.frontend.rule: "Host:${DOMAINNAME}"
-      traefik.docker.network: "traefik_proxy"
+      traefik.docker.network: "n_traefik_proxy"
       traefik.port: "80"
     volumes:
       - v_nextcloud:/var/www/html:ro
