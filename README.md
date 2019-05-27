@@ -13,8 +13,8 @@ git clone git@github.com:cygairko/mydockerpi.git
 cd mydockerpi
 ```
 ```
-touch ~/mydockerpi/basesvc/traefik/acme.json
-chmod 600 ~/mydockerpi/basesvc/traefik/acme.json
+touch ~/mydockerpi/traefik/acme.json
+chmod 600 ~/mydockerpi/traefik/acme.json
 ```
 
 Create ```.env``` from sample file
