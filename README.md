@@ -13,8 +13,8 @@ git clone git@github.com:cygairko/mydockerpi.git
 cd mydockerpi
 ```
 ```
-touch ~/mydockerpi/basesvc/traefik/acme.json
-chmod 600 ~/mydockerpi/basesvc/traefik/acme.json
+touch ~/mydockerpi/traefik/acme.json
+chmod 600 ~/mydockerpi/traefik/acme.json
 ```
 
 Create ```.env``` from sample file
@@ -43,7 +43,7 @@ docker-compose -f docker-compose-nextcloud.yml pull
 docker-compose -f docker-compose-basesvc.yml up -d
 docker-compose -f docker-compose-nextcloud.yml up -d
 ```
-It'll take a while until containers are completely up. Traefik will grab the certificates one after another. When you can access traefik.mycloud.example.com (and the other services) without a cert warning everything's up. Also nextcloud (2nd compose file) setuptook almost 15min on my Pi2. Wait for it to complete.
+It'll take a while until containers are completely up. Traefik will grab the certificates one after another. When you can access traefik.mycloud.example.com (and the other services) without a cert warning everything's up. Also nextcloud (2nd compose file) setup almost took 15min on my Pi2. Watch ```docker logs nextcloud -f``` accordingly.
 
 ## Benefits
 - Watchtower will keep the containers updated.
