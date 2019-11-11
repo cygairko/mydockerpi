@@ -84,7 +84,7 @@ services:
       traefik.docker.network: "n_traefik_proxy"
 
   postgres:
-    image: postgres:alpine
+    image: postgres:11-alpine
     container_name: postgres
     restart: always
     networks:
