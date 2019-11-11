@@ -1,5 +1,5 @@
 # mydockerpi
-Raspberry Pi homeserver running Nextcloud in a Docker environment. Nextcloud is available on the given domain name. Further services are using subdomains.
+Raspberry Pi homeserver running Nextcloud and some other services around in a Docker environment. Nextcloud is available on the given domain name. Further services are using subdomains.
 
 ## Todo
 - Backup volumes
