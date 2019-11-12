@@ -11,7 +11,7 @@ networks:
     external: true
 
 volumes:
-  v_postgres:
+  v_postgres12:
     external: true
   v_redis:
     external: true
@@ -84,7 +84,7 @@ services:
       traefik.docker.network: "n_traefik_proxy"
 
   postgres:
-    image: postgres:11-alpine
+    image: postgres:12-alpine
     container_name: postgres
     restart: always
     networks:
@@ -97,7 +97,7 @@ services:
       - POSTGRES_USER=postgres
 
   redis:
-    image: redis:alpine
+    image: redis5-:alpine
     container_name: redis
     restart: always
     networks:
@@ -108,7 +108,7 @@ services:
       - v_redis:/data
 
   nextcloud:
-    image: nextcloud:fpm-alpine
+    image: nextcloud:17-fpm-alpine
     container_name: nextcloud
     restart: always
     networks:
@@ -129,7 +129,7 @@ services:
       - redis
 
   nginx_web:
-    image: nginx:alpine
+    image: nginx:1-alpine
     container_name: nginx_web
     restart: always
     networks:
