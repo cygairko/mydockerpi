@@ -22,7 +22,7 @@ volumes:
 
 services:
   traefik:
-    image: traefik:alpine
+    image: traefik:1.7-alpine
     container_name: traefik
     restart: always
     hostname: traefik
