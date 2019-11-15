@@ -11,7 +11,7 @@ networks:
     external: true
 
 volumes:
-  v_postgres11:
+  v_postgres:
     external: true
   v_redis:
     external: true
@@ -92,7 +92,7 @@ services:
     labels:
       traefik.enable: "false"
     volumes:
-      - v_postgres11:/var/lib/postgresql/data
+      - v_postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
 
