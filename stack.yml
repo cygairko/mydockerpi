@@ -146,3 +146,16 @@ services:
       - /home/${USER}/mydockerpi/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - nextcloud
+
+  mariadb:
+    image: mariadb:10
+    container_name: kodidb
+    restart: always
+    networks:
+      - n_web
+    ports:
+      - "3306:3306"
+    labels:
+      traefik.enable: "false"
+    volumes:
+      - v_kodidb:/var/lib/mysql
