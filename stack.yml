@@ -150,14 +150,17 @@ services:
       - nextcloud
 
   mariadb:
-    image: mariadb:10
+    image: linuxserver/mariadb
     container_name: kodidb
     restart: always
-    networks:
-      - n_web
     ports:
       - "3306:3306"
     labels:
       traefik.enable: "false"
     volumes:
       - v_kodidb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${KODI_MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=kodi #optional
+      - MYSQL_USER=kodi #optional
+      - MYSQL_PASSWORD=${KODI_DATABASE_PASSWORD} #optional
