@@ -19,6 +19,8 @@ volumes:
     external: true
   v_portainer:
     external: true
+  v_kodidb:
+    external: true
 
 services:
   traefik:
