@@ -1,0 +1,22 @@
+version: '3.7'
+
+volumes:
+  v_kodidb:
+    external: true
+
+services:
+  mariadb:
+    image: linuxserver/mariadb:arm32v7-latest
+    container_name: kodidb
+    restart: always
+    ports:
+      - "3306:3306"
+    labels:
+      traefik.enable: "false"
+    volumes:
+      - v_kodidb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${KODI_MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=kodi #optional
+      - MYSQL_USER=kodi #optional
+      - MYSQL_PASSWORD=${KODI_DATABASE_PASSWORD} #optional
