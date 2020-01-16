@@ -29,7 +29,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /home/${USER}/mydockerpi/infrastructure/traefik/traefik.toml:/etc/traefik/traefik.toml
-      - /home/${USER}/mydockerpi/infrasturcture/traefik/acme.json:/etc/traefik/acme/acme.json
+      - /home/${USER}/mydockerpi/infrastructure/traefik/acme.json:/etc/traefik/acme/acme.json
     command: --acme.domains="${DOMAINNAME}" \
              --acme.email="${ACME_EMAIL}" \
              --docker.domain="${DOMAINNAME}"
