@@ -48,6 +48,10 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - v_portainer:/data
+    environment:
+      - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000
 
   watchtower:
     image: containrrr/watchtower:armhf-latest

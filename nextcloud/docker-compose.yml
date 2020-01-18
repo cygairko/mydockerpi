@@ -45,7 +45,7 @@ services:
       - v_redis:/data
 
   nextcloud:
-    image: nextcloud:17-fpm-alpine
+    image: nextcloud:18-fpm-alpine
     container_name: nextcloud
     restart: always
     networks:
