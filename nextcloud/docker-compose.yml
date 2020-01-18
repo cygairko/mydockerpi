@@ -29,6 +29,7 @@ services:
       - v_postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
       - TZ=Europe/Berlin
       - PUID=1000
       - PGID=1000
