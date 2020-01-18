@@ -29,6 +29,9 @@ services:
       - v_postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
+      - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000
 
   redis:
     image: redis:5-alpine
@@ -58,6 +61,11 @@ services:
       - POSTGRES_USER=postgres
       - REDIS_HOST=redis
       - NEXTCLOUD_TRUSTED_DOMAINS=${DOMAINNAME}
+      - NEXTCLOUD_ADMIN_USER=$(NC_ADMIN_USER)
+      - NEXTCLOUD_ADMIN_PASSWORD=$(NC_ADMIN_PW)
+      - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000
     depends_on:
       - postgres
       - redis
