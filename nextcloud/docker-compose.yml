@@ -61,8 +61,13 @@ services:
       - POSTGRES_USER=postgres
       - REDIS_HOST=redis
       - NEXTCLOUD_TRUSTED_DOMAINS=${DOMAINNAME}
+<<<<<<< HEAD
       - NEXTCLOUD_ADMIN_USER=${(}NC_ADMIN_USER}
       - NEXTCLOUD_ADMIN_PASSWORD=${(}NC_ADMIN_PW}
+=======
+      - NEXTCLOUD_ADMIN_USER=${NC_ADMIN_USER}
+      - NEXTCLOUD_ADMIN_PASSWORD=${NC_ADMIN_PW}
+>>>>>>> 2ecdc257adb17eb6b78be8046ab1ddaf3065d0ef
       - TZ=Europe/Berlin
       - PUID=1000
       - PGID=1000
