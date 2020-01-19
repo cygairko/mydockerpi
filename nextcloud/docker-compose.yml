@@ -60,6 +60,7 @@ services:
       - POSTGRES_HOST=postgres
       - POSTGRES_DB=nextcloud
       - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
       - REDIS_HOST=redis
       - NEXTCLOUD_TRUSTED_DOMAINS=${DOMAINNAME}
       - NEXTCLOUD_ADMIN_USER=${NC_ADMIN_USER}
