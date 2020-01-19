@@ -6,7 +6,7 @@ volumes:
 
 services:
   mariadb:
-    image: linuxserver/mariadb:arm32v7-latest
+    image: linuxserver/mariadb:latest
     container_name: kodidb
     restart: always
     ports:
@@ -20,3 +20,6 @@ services:
       - MYSQL_DATABASE=kodi #optional
       - MYSQL_USER=kodi #optional
       - MYSQL_PASSWORD=${KODI_DATABASE_PASSWORD} #optional
+      - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000
