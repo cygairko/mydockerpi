@@ -11,7 +11,6 @@ volumes:
 services:
   traefik:
     image: traefik:1.7-alpine
-    restart: always
     hostname: traefik
     networks:
       - default
@@ -27,8 +26,8 @@ services:
       traefik.docker.network: "n_traefik_proxy"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /home/${USER}/mydockerpi/infrastructure/traefik/traefik.toml:/etc/traefik/traefik.toml
-      - /home/${USER}/mydockerpi/infrastructure/traefik/acme.json:/etc/traefik/acme/acme.json
+      - /home/${USER}/mydockerpi/traefik.toml:/etc/traefik/traefik.toml
+      - /home/${USER}/mydockerpi/acme.json:/etc/traefik/acme/acme.json
     environment:
       - TZ=Europe/Berlin
       - PUID=1000
@@ -39,7 +38,6 @@ services:
 
   portainer:
     image: portainer/portainer:latest
-    restart: always
     networks:
       - n_traefik_proxy
     labels:

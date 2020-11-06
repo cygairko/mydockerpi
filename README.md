@@ -23,13 +23,15 @@ cp ~/mydockerpi/sample.env ~/mydockerpi/.env
 ```
 and update content with your domain and passwords.
 
-### Create docker volumes
+### Create docker volumes and networks
 They will be our storages and can be archived for backup reasons later on.
 ```
 docker volume create v_portainer
 docker volume create v_nextcloud
 docker volume create v_postgres
 docker volume create v_redis
+
+docker network create n_traefik_proxy
 ```
 
 ### Get the containers running
