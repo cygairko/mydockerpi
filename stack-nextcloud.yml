@@ -1,0 +1,92 @@
+version: '3.7'
+
+networks:
+  n_web:
+    driver: bridge
+  n_db:
+    driver: bridge
+  n_traefik_proxy:
+    external: true
+
+volumes:
+  v_postgres:
+    external: true
+  v_redis:
+    external: true
+  v_nextcloud:
+    external: true
+
+services:
+  postgres:
+    image: postgres:13-alpine
+    container_name: postgres
+    restart: always
+    networks:
+      - n_db
+    labels:
+      traefik.enable: "false"
+    volumes:
+      - v_postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000
+
+  redis:
+    image: redis:6-alpine
+    container_name: redis
+    restart: always
+    networks:
+      - n_db
+    labels:
+      traefik.enable: "false"
+    volumes:
+      - v_redis:/data
+
+  nextcloud:
+    image: nextcloud:20-fpm-alpine
+    container_name: nextcloud
+    restart: always
+    networks:
+      - n_db
+      - n_web
+    labels:
+      traefik.enable: "false"
+    volumes:
+      - v_nextcloud:/var/www/html
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - REDIS_HOST=redis
+      - NEXTCLOUD_TRUSTED_DOMAINS=${DOMAINNAME}
+      - NEXTCLOUD_ADMIN_USER=${NC_ADMIN_USER}
+      - NEXTCLOUD_ADMIN_PASSWORD=${NC_ADMIN_PW}
+      - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000
+    depends_on:
+      - postgres
+      - redis
+
+  nginx_web:
+    image: nginx:1-alpine
+    container_name: nginx_web
+    restart: always
+    networks:
+      - n_web
+      - n_traefik_proxy
+    labels:
+      traefik.enable: "true"
+      traefik.backend: "nextcloud"
+      traefik.frontend.rule: "Host:${DOMAINNAME}"
+      traefik.docker.network: "n_traefik_proxy"
+      traefik.port: "80"
+    volumes:
+      - v_nextcloud:/var/www/html:ro
+      - /home/${USER}/mydockerpi/nextcloud/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - nextcloud
