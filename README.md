@@ -26,10 +26,10 @@ and update content with your domain and passwords.
 ### Create docker volumes
 They will be our storages and can be archived for backup reasons later on.
 ```
-docker volumes create v_portainer
-docker volumes create v_nextcloud
-docker volumes create v_postgres
-docker volumes create v_redis
+docker volume create v_portainer
+docker volume create v_nextcloud
+docker volume create v_postgres
+docker volume create v_redis
 ```
 
 ### Get the containers running
