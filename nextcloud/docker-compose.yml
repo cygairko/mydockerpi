@@ -18,7 +18,7 @@ volumes:
 
 services:
   postgres:
-    image: postgres:12-alpine
+    image: postgres:13-alpine
     container_name: postgres
     restart: always
     networks:
@@ -35,7 +35,7 @@ services:
       - PGID=1000
 
   redis:
-    image: redis:5-alpine
+    image: redis:6-alpine
     container_name: redis
     restart: always
     networks:
@@ -46,7 +46,7 @@ services:
       - v_redis:/data
 
   nextcloud:
-    image: nextcloud:18-fpm-alpine
+    image: nextcloud:20-fpm-alpine
     container_name: nextcloud
     restart: always
     networks:
