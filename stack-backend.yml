@@ -32,6 +32,8 @@ services:
       - TZ=Europe/Berlin
       - PUID=1000
       - PGID=1000
+    env_file:
+      - .env
     command: --acme.domains="${DOMAINNAME}" \
              --acme.email="${ACME_EMAIL}" \
              --docker.domain="${DOMAINNAME}"
