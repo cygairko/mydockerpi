@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 networks:
   n_traefik_proxy:
@@ -33,7 +33,7 @@ services:
       - PUID=1000
       - PGID=1000
     env_file:
-      - .env
+      - backend.env
     command: --acme.domains="${DOMAINNAME}" \
              --acme.email="${ACME_EMAIL}" \
              --docker.domain="${DOMAINNAME}"
