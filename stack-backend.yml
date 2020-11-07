@@ -34,9 +34,9 @@ services:
       - PGID=1000
     env_file:
       - backend.env
-    command: --acme.domains="${DOMAINNAME}" \
-             --acme.email="${ACME_EMAIL}" \
-             --docker.domain="${DOMAINNAME}"
+    command: --acme.domains=${DOMAINNAME} \
+             --acme.email=${ACME_EMAIL} \
+             --docker.domain=${DOMAINNAME}
 
   portainer:
     image: portainer/portainer:latest
