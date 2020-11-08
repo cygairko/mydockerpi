@@ -28,8 +28,8 @@ services:
       traefik.docker.network: "n_traefik_proxy"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /home/${USER}/mydockerpi/backend/traefik/traefik.toml:/etc/traefik/traefik.toml
-      - /home/${USER}/mydockerpi/backend/traefik/acme.json:/etc/traefik/acme/acme.json
+      - /home/${USER}/mydockerpi/backend/traefik.toml:/etc/traefik/traefik.toml
+      - /home/${USER}/mydockerpi/backend/acme:/etc/traefik/acme
     environment:
       - TZ=Europe/Berlin
       - PUID=1000
