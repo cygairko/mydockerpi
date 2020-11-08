@@ -3,6 +3,8 @@ Raspberry Pi homeserver running Nextcloud and some other services around in a Do
 
 ## Todo
 - Backup volumes
+- Use docker secrets for the passwords
+- Migrate to traefik v2
 - Migrate to docker stack instead docker-compose
 
 ## Step by step
