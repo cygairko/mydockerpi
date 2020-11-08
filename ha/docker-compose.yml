@@ -1,0 +1,27 @@
+version: '3.8'
+
+networks:
+  n_traefik_proxy:
+    external: true
+
+volumes:
+  v_portainer:
+    external: true
+
+services:
+  homeassistant:
+    image: homeassistant/raspberrypi2-homeassistant:stable
+    container_name: homeassistant
+    restart: always
+    hostname: homeassistant
+    networks:
+      - n_traefik_proxy
+    labels:
+      traefik.enable: "true"
+      traefik.backend: "homeassistant"
+      traefik.frontend.rule: "Host:ha.${DOMAINNAME}"
+      traefik.docker.network: "n_traefik_proxy"
+    environment:
+      - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000

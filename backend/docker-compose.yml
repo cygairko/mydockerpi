@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 networks:
   n_traefik_proxy:
@@ -29,8 +29,8 @@ services:
       traefik.docker.network: "n_traefik_proxy"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /home/${USER}/mydockerpi/infrastructure/traefik/traefik.toml:/etc/traefik/traefik.toml
-      - /home/${USER}/mydockerpi/infrastructure/traefik/acme.json:/etc/traefik/acme/acme.json
+      - /home/${USER}/mydockerpi/backend/traefik.toml:/etc/traefik/traefik.toml
+      - /home/${USER}/mydockerpi/backend/acme:/etc/traefik/acme
     environment:
       - TZ=Europe/Berlin
       - PUID=1000
@@ -53,6 +53,23 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - v_portainer:/data
+    environment:
+      - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000
+
+  whoami:
+    image: traefik/whoami
+    container_name: whoami
+    restart: always
+    hostname: whoami
+    networks:
+      - n_traefik_proxy
+    labels:
+      traefik.enable: "true"
+      traefik.backend: "whoami"
+      traefik.frontend.rule: "Host:whoami.${DOMAINNAME}"
+      traefik.docker.network: "n_traefik_proxy"
     environment:
       - TZ=Europe/Berlin
       - PUID=1000
