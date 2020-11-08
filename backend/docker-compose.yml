@@ -57,19 +57,19 @@ services:
       - PUID=1000
       - PGID=1000
 
-    whoami:
-      image: traefik/whoami
-      container_name: whoami
-      restart: always
-      hostname: whoami
-      networks:
-        - n_traefik_proxy
-      labels:
-        traefik.enable: "true"
-        traefik.backend: "whoami"
-        traefik.frontend.rule: "Host:whoami.${DOMAINNAME}"
-        traefik.docker.network: "n_traefik_proxy"
-      environment:
-        - TZ=Europe/Berlin
-        - PUID=1000
-        - PGID=1000
+  whoami:
+    image: traefik/whoami
+    container_name: whoami
+    restart: always
+    hostname: whoami
+    networks:
+      - n_traefik_proxy
+    labels:
+      traefik.enable: "true"
+      traefik.backend: "whoami"
+      traefik.frontend.rule: "Host:whoami.${DOMAINNAME}"
+      traefik.docker.network: "n_traefik_proxy"
+    environment:
+      - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000
