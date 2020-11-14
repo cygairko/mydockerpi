@@ -57,17 +57,6 @@ services:
       - PUID=1000
       - PGID=1000
 
-  ddclient:
-    image: linuxserver/ddclient
-    container_name: ddclient
-    restart: always
-    environment:
-      - TZ=Europe/London
-      - PUID=1000
-      - PGID=1000
-    volumes:
-      - /home/${USER}/mydockerpi/backend/ddconfig:/config
-
   whoami:
     image: traefik/whoami
     container_name: whoami
