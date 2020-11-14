@@ -5,7 +5,7 @@ networks:
     external: true
 
 volumes:
-  v_portainer:
+  v_homeassistant:
     external: true
 
 services:
@@ -21,6 +21,8 @@ services:
       traefik.backend: "homeassistant"
       traefik.frontend.rule: "Host:ha.${DOMAINNAME}"
       traefik.docker.network: "n_traefik_proxy"
+    volumes:
+      - v_homeassistant:/config
     environment:
       - TZ=Europe/Berlin
       - PUID=1000
