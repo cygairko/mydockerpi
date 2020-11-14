@@ -16,6 +16,8 @@ services:
     hostname: homeassistant
     networks:
       - n_traefik_proxy
+    ports:
+      - "8123:8123"
     labels:
       traefik.enable: "true"
       traefik.backend: "homeassistant"
